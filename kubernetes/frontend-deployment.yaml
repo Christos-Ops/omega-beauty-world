@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: omega-beauty-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: omega-beauty-frontend
+  template:
+    metadata:
+      labels:
+        app: omega-beauty-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: omega-beauty-frontend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: omega-beauty-frontend
+spec:
+  selector:
+    app: omega-beauty-frontend
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP

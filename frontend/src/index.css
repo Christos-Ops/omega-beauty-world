@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-royal-50 text-royal-950 font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold-400 px-7 py-3 font-sans text-sm font-medium uppercase tracking-wider text-royal-950 transition-all duration-300 hover:bg-gold-300 hover:shadow-lg hover:shadow-gold-400/40 active:scale-95;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-royal-300 px-7 py-3 font-sans text-sm font-medium uppercase tracking-wider text-royal-700 transition-all duration-300 hover:border-royal-500 hover:bg-royal-50 active:scale-95;
+  }
+  .input-field {
+    @apply w-full rounded-xl border border-royal-200 bg-white px-4 py-3 text-royal-950 placeholder-royal-300 transition-colors focus:border-gold-400 focus:outline-none focus:ring-2 focus:ring-gold-200;
+  }
+  .section-title {
+    @apply font-serif text-3xl font-semibold text-royal-900 md:text-4xl;
+  }
+  .eyebrow {
+    @apply font-sans text-xs font-medium uppercase tracking-[0.25em] text-gold-600;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f6f3fb;
+}
+::-webkit-scrollbar-thumb {
+  background: #bfa3e3;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a87fd4;
+}

@@ -1,0 +1,41 @@
+version: '3.9'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: omega-beauty-backend
+    ports:
+      - "4000:4000"
+    environment:
+      PORT: 4000
+      CLIENT_ORIGIN: http://localhost
+      JWT_SECRET: change-me-in-production
+      DATABASE_URL: postgres://postgres:postgres@db:5432/omegabeauty
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: omega-beauty-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:16-alpine
+    container_name: omega-beauty-db
+    restart: always
+    environment:
+      POSTGRES_DB: omegabeauty
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
